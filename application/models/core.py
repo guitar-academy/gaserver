@@ -5,7 +5,7 @@ from sqlalchemy.ext.orderinglist import ordering_list
 # Declaring classes Song and Skill
 class Song(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    title = db.Column(db.String(1000), unique=True)
+    title = db.Column(db.String(1000), unique=True, index=True)
     description = db.Column(db.String(1000))
     notation = db.Column(db.String(1000))
 
@@ -32,7 +32,7 @@ class Song(db.Model):
 
 class Skill(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String(1000), unique=True)
+    name = db.Column(db.String(1000), unique=True, index=True)
     description = db.Column(db.String(1000))
     relevant_songs = association_proxy('skillpoints', 'song')
 
@@ -71,7 +71,7 @@ class Skillpoint(db.Model):
 # Declaring class WarmUp
 class Warmup(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String(1000), unique=True)
+    name = db.Column(db.String(1000), unique=True, index=True)
     description = db.Column(db.String(1000))
     entries = db.relationship('WarmupEntry', order_by='WarmupEntry.sort_order',
                               collection_class=ordering_list('sort_order'))
