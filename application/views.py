@@ -1,5 +1,6 @@
 from flask import render_template, flash, redirect, make_response
 from flask import request
+from flask import jsonify
 from application import app
 from .forms import ComposeForm
 import application.logic
