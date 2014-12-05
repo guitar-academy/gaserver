@@ -43,6 +43,14 @@ class Skill(db.Model):
     def __repr__(self):
         return '<Skill %r: %r>' % (self.id, self.name)
 
+    @property
+    def serialize(self):
+        return {
+            'id': self.id,
+            'name': self.name,
+            'description': self.description
+        }
+
 # Association class between song and skill
 class Skillpoint(db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -75,6 +83,14 @@ class Warmup(db.Model):
     def __repr__(self):
         return '<Warmup: %r>' % self.name
 
+    @property
+    def serialize(self):
+        return {
+            'id': self.id,
+            'name': self.name,
+            'description': self.description
+        }
+
 # Association class between song and warmup
 # add new entry: Warmup.entries.insert(pos, WarmupEntry(song_id))
 class WarmupEntry(db.Model):
@@ -88,5 +104,5 @@ class WarmupEntry(db.Model):
         self.song_id = song_id
     
     def __repr__(self):
-        return '<WarmupEntry %r: %r>' % (sort_order, song.title)
+        return '<WarmupEntry %r: %r>' % (self.sort_order, self.song.title)
 
