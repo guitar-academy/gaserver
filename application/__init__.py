@@ -9,6 +9,3 @@ db = SQLAlchemy(app)
 
 from application import views
 from application.models import core, login
-
-# create tables in database
-#db.create_all(app=app)
