@@ -1,4 +1,4 @@
-from database import db
+from application import db
 from sqlalchemy.ext.associationproxy import association_proxy
 from sqlalchemy.ext.orderinglist import ordering_list
 
@@ -27,6 +27,9 @@ class Skill(db.Model):
         self.name = name
         self.description = description
 
+    def __repr__(self):
+        return '<Skill %r: %r>' % (id, name)
+
 # Association class between song and skill
 class Skillpoint(db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -40,6 +43,9 @@ class Skillpoint(db.Model):
         self.song_id = song_id
         self.skill_id = skill_id
         self.value = value
+
+    def __repr__(self):
+        return '<Skillpoint for %r: %r of %r>' % (self.song.title, self.value, self.skill.name)
 
 # Declaring class WarmUp
 class Warmup(db.Model):
