@@ -15,8 +15,6 @@ def hello():
     db.create_all()
     return "Hello world!"
 
-@app.route("/user")
-
 
 if __name__ == "__main__":
     app.run(debug=True)
