@@ -6,8 +6,8 @@ from sqlalchemy.ext.orderinglist import ordering_list
 class Song(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String(1000), unique=True, index=True)
-    description = db.Column(db.String(1000))
-    notation = db.Column(db.String(1000))
+    description = db.Column(db.Text)
+    notation = db.Column(db.Text)
 
     def __init__(self, title, description, notation):
         self.title = title
@@ -15,7 +15,7 @@ class Song(db.Model):
         self.notation = notation
 
     def __repr__(self):
-        return '<Song %r: %r>' % (self.id, self.title)
+        return '<Song {0}: {1}>.format(self.id, self.title))'
 
     @property
     def serialize(self):
@@ -33,7 +33,7 @@ class Song(db.Model):
 class Skill(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(1000), unique=True, index=True)
-    description = db.Column(db.String(1000))
+    description = db.Column(db.Text)
     relevant_songs = association_proxy('skillpoints', 'song')
 
     def __init__(self, name, description):
@@ -41,7 +41,7 @@ class Skill(db.Model):
         self.description = description
 
     def __repr__(self):
-        return '<Skill %r: %r>' % (self.id, self.name)
+        return '<Skill {0}: {1}>'.format(self.id, self.name)
 
     @property
     def serialize(self):
@@ -66,13 +66,13 @@ class Skillpoint(db.Model):
         self.value = value
 
     def __repr__(self):
-        return '<Skillpoint for %r: %r of %r>' % (self.song.title, self.value, self.skill.name)
+        return '<Skillpoint for {0}: {1} of {2}'.format(self.song.title, self.value, self.skill.name)
 
 # Declaring class WarmUp
 class Warmup(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(1000), unique=True, index=True)
-    description = db.Column(db.String(1000))
+    description = db.Column(db.Text)
     entries = db.relationship('WarmupEntry', order_by='WarmupEntry.sort_order',
                               collection_class=ordering_list('sort_order'))
 
@@ -81,7 +81,7 @@ class Warmup(db.Model):
         self.description = description
 
     def __repr__(self):
-        return '<Warmup: %r>' % self.name
+        return '<Warmup: {0}>'.format(self.name)
 
     @property
     def serialize(self):
@@ -104,5 +104,5 @@ class WarmupEntry(db.Model):
         self.song_id = song_id
     
     def __repr__(self):
-        return '<WarmupEntry %r: %r>' % (self.sort_order, self.song.title)
+        return '<WarmupEntry {0}: {1}>'.format(self.sort_order, self.song.title)
 
