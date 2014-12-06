@@ -12,7 +12,7 @@ def not_found(error):
 
 # Web services / APIs (nouns)
 
-@app.route('/songs', subdomain='api', methods=['GET', 'POST'])
+@app.route('/api/songs', methods=['GET', 'POST'])
 def songs():
     if request.method == 'GET':
         songs_json = application.logic.get_all_songs()
@@ -25,7 +25,7 @@ def songs():
             application.logic.create_song(song) # add to db
             return jsonify({'song': song}), 201 # return status Created
 
-@app.route('/skills', subdomain='api', methods=['GET', 'POST'])
+@app.route('/api/skills', methods=['GET', 'POST'])
 def skills():
     if request.method == 'GET':
         skills_json = application.logic.get_all_skills()
@@ -38,7 +38,7 @@ def skills():
             application.logic.create_skill(skill)
             return jsonify({'skill': skill}), 201
 
-@app.route('/warmups', subdomain='api', methods=['GET', 'POST'])
+@app.route('/api/warmups', methods=['GET', 'POST'])
 def warmups():
     if request.method == 'GET':
         warmups_json = application.logic.get_all_warmups()
@@ -51,7 +51,7 @@ def warmups():
             application.logic.create_warmup(warmup)
             return jsonify({'uri': '/warmup/' + warmup.name}), 201
 
-@app.route('/song/<title>', subdomain='api', methods=['GET', 'PUT', 'DELETE'])
+@app.route('/api/songs/<title>', methods=['GET', 'PUT', 'DELETE'])
 def song(title):
     if request.method == 'GET':
         return application.logic.get_song_by_title(title)
@@ -67,7 +67,7 @@ def song(title):
         return "", 204
 
 
-@app.route('/skill/<name>', subdomain='api', methods=['GET', 'PUT', 'DELETE'])
+@app.route('/api/skill/<name>', methods=['GET', 'PUT', 'DELETE'])
 def skill(name):
     if request.method == 'GET':
         return application.logic.get_skill_by_name(name)
@@ -83,7 +83,7 @@ def skill(name):
         return "", 204
 
 
-@app.route('/warmup/<name>', subdomain='api', methods=['GET', 'PUT', 'DELETE'])
+@app.route('/api/warmups/<name>', methods=['GET', 'PUT', 'DELETE'])
 def warmup(name):
     if request.method == 'GET':
         return application.logic.get_warmup_by_name(name)
