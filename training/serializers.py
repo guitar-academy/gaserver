@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import Song, Skill, WarmUp
+from .models import Song, Skill, WarmUp, SongSkill, WarmUpSong
 
 
 class SongSerializer(serializers.ModelSerializer):
@@ -13,3 +13,11 @@ class SkillSerializer(serializers.ModelSerializer):
 class WarmUpSerializer(serializers.ModelSerializer):
     class Meta:
         model = WarmUp
+
+class SongSkillSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = SongSkill
+
+class WarmUpSongSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = WarmUpSong
