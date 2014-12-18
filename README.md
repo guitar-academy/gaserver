@@ -15,13 +15,13 @@ If you're not using virtualenv or virtualenvwrapper you may skip this step.
 
 #### For virtualenvwrapper ####
 ```bash
-mkvirtualenv --no-site-packages {{ project_name }}-env
+mkvirtualenv ga-env
 ```
 
 #### For virtualenv ####
 ```bash
-virtualenv --no-site-packages {{ project_name }}-env
-cd {{ project_name }}-env
+virtualenv ga-env
+cd ga-env
 source bin/activate
 ```
 
