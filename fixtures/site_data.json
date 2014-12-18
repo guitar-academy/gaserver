@@ -1,0 +1,18 @@
+[
+{
+    "pk": 1,
+    "fields": {
+        "domain": "www.guitaracademy.rocks",
+        "name": "Guitar Academy"
+    },
+    "model": "sites.site"
+},
+{
+    "pk": 2,
+    "fields": {
+        "domain": "localhost",
+        "name": "Guitar Academy (localhost)"
+    },
+    "model": "sites.site"
+}
+]
