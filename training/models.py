@@ -23,7 +23,7 @@ class SongSkill(models.Model):
     value = models.IntegerField()
 
     def __str__(self):
-        return "{} ({}: {})".format(song, skill, value)
+        return "{} ({}: {})".format(self.song, self.skill, self.value)
 
 
 class WarmUp(models.Model):

@@ -121,6 +121,11 @@ REST_FRAMEWORK = {
     ),
 }
 
+# Fixture Directory (Initial Data, Dump Data, Test Data, etc.)
+FIXTURE_DIRS = (
+    os.path.join(BASE_DIR, 'fixtures'),
+)
+
 try:
     LOCAL_SETTINGS
 except NameError:

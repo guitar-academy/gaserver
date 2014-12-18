@@ -1,0 +1,62 @@
+[
+{
+    "model": "training.song",
+    "pk": 2,
+    "fields": {
+        "title": "Love Song",
+        "notation": "123",
+        "description": "Love Story Short"
+    }
+},
+{
+    "model": "training.skill",
+    "pk": 1,
+    "fields": {
+        "description": "Practice Thumb\r\n",
+        "name": "Finger"
+    }
+},
+{
+    "model": "training.skill",
+    "pk": 2,
+    "fields": {
+        "description": "Stand Pose",
+        "name": "Posture"
+    }
+},
+{
+    "model": "training.songskill",
+    "pk": 1,
+    "fields": {
+        "skill": 1,
+        "song": 2,
+        "value": 10
+    }
+},
+{
+    "model": "training.songskill",
+    "pk": 2,
+    "fields": {
+        "skill": 2,
+        "song": 2,
+        "value": 5
+    }
+},
+{
+    "model": "training.warmup",
+    "pk": 2,
+    "fields": {
+        "description": "Do this First",
+        "name": "Morning Warmup"
+    }
+},
+{
+    "model": "training.warmupsong",
+    "pk": 1,
+    "fields": {
+        "order": 1,
+        "song": 2,
+        "warm_up": 2
+    }
+}
+]
