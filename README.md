@@ -1,5 +1,5 @@
-gaserver
-========
+Guitar Academy Server
+=====================
 
 Server for Guitar Academy written in Python.
 
@@ -13,8 +13,8 @@ Server for Guitar Academy written in Python.
    pip install -r requirements.txt
 
 - Step 2. Initiate database
-   python migration.py db upgrade
+   python manage.py migrate
 
 - Step 3. Run server
-   python run.py
-   
+   python manage.py runserver
+

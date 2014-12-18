@@ -1,5 +1,5 @@
 """
-Django settings for gaserver project.
+Django settings for ga project.
 
 For more information on this file, see
 https://docs.djangoproject.com/en/1.7/topics/settings/
@@ -57,9 +57,9 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 )
 
-ROOT_URLCONF = 'gaserver.urls'
+ROOT_URLCONF = 'ga.urls'
 
-WSGI_APPLICATION = 'gaserver.wsgi.application'
+WSGI_APPLICATION = 'ga.wsgi.application'
 
 
 # Database
@@ -109,7 +109,7 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     "django.core.context_processors.tz",
     "django.contrib.messages.context_processors.messages",
 
-    'gaserver.context_processors.site',
+    'ga.context_processors.site',
 )
 
 
@@ -117,6 +117,6 @@ TEMPLATE_CONTEXT_PROCESSORS = (
 REST_FRAMEWORK = {
     'DEFAULT_RENDERER_CLASSES': (
         'rest_framework.renderers.JSONRenderer',
-        'gaserver.renderers.GABrowsableAPIRenderer',
+        'ga.renderers.GABrowsableAPIRenderer',
     ),
 }
