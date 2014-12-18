@@ -5,7 +5,8 @@ class Song(models.Model):
     title = models.CharField(max_length=500)
     description = models.TextField(blank=True)
     notation = models.TextField()
-    skills = models.ManyToManyField('Skill', through='SongSkill', blank=True)
+    skills = models.ManyToManyField('Skill', through='SongSkill',
+            related_name='songs', blank=True)
 
     def __str__(self):
         return self.title
@@ -32,7 +33,8 @@ class SongSkill(models.Model):
 class WarmUp(models.Model):
     name = models.CharField(max_length=50)
     description = models.TextField(blank=True)
-    entries = models.ManyToManyField('Song', through='WarmUpSong')
+    songs = models.ManyToManyField('Song', through='WarmUpSong',
+            related_name='warmups')
 
     def __str__(self):
         return self.name
