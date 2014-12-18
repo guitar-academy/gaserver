@@ -1,0 +1,20 @@
+[
+{
+    "model": "auth.user",
+    "pk": 1,
+    "fields": {
+        "password": "pbkdf2_sha256$12000$y7peMagXlg4e$q8Xd3Ibi7BzJHxxIYUO6ld2tpUYlZVeoAcTxH6ZkRYs=",
+        "date_joined": "2014-12-18T07:54:54Z",
+        "username": "eugene",
+        "is_superuser": true,
+        "first_name": "Eugene",
+        "is_staff": true,
+        "user_permissions": [],
+        "groups": [],
+        "last_login": "2014-12-18T10:54:55Z",
+        "email": "yeo.eugene.oey@gmail.com",
+        "is_active": true,
+        "last_name": "Yeo"
+    }
+}
+]
