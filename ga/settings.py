@@ -127,6 +127,21 @@ FIXTURE_DIRS = (
     os.path.join(BASE_DIR, 'fixtures'),
 )
 
+# Shell Plus
+SHELL_PLUS = "ipython"
+
+SHELL_PLUS_PRE_IMPORTS = (
+)
+
+SHELL_PLUS_POST_IMPORTS = (
+    ('training.serializers', '*'),
+    ('training.factories', '*'),
+    ('pprint','pprint'),
+    ('urllib', 'request'),
+    ('django.core.urlresolvers', 'reverse'),
+    ('django.core.urlresolvers', 'resolve'),
+)
+
 try:
     LOCAL_SETTINGS
 except NameError:
