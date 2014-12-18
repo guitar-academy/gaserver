@@ -1,0 +1,10 @@
+{% extends "rest_framework/base.html" %}
+
+{% block title %}{{ site.name }}{% endblock %}
+
+{% block branding %}
+<a class='navbar-brand' rel="nofollow" href='{% url 'api-root' %}'>
+{{ site.name }}
+<span class="version">{{ version }}</span>
+</a>
+{% endblock %}
