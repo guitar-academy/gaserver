@@ -3,18 +3,55 @@ Guitar Academy Server
 
 Server for Guitar Academy written in Python.
 
-## How to start
+## Prerequisites
+* python 3.4
+* pip
+* virtualenv/wrapper (optional)
 
-**Note**: If you have both Python 2 and 3 on your environment, you may have to use 'pip3' and 'python3' instead of 'pip' and 'python' on the instructions below.
+## Installation ##
+### Creating the environment ###
+Create a virtual python environment for the project.
+If you're not using virtualenv or virtualenvwrapper you may skip this step.
 
-- Step 0 (Optional) Install virtualenv and activate it.
+#### For virtualenvwrapper ####
+```bash
+mkvirtualenv --no-site-packages {{ project_name }}-env
+```
 
-- Step 1. Install requirements
-   pip install -r requirements.txt
+#### For virtualenv ####
+```bash
+virtualenv --no-site-packages {{ project_name }}-env
+cd {{ project_name }}-env
+source bin/activate
+```
 
-- Step 2. Initiate database
-   python manage.py migrate
+### Clone the code ###
+Obtain the url to your git repository.
 
-- Step 3. Run server
-   python manage.py runserver
+```bash
+git clone git@github.com:guitar-academy/gaserver.git
+```
 
+### Install requirements ###
+```bash
+cd gaserver
+pip install -r requirements.txt
+```
+
+### Configure project ###
+```bash
+cp gaserver/__local_settings.py gaserver/local_settings.py
+vi gaserver/local_settings.py
+```
+
+### Setup database ###
+```bash
+python manage.py migrate
+```
+
+## Running ##
+```bash
+python manage.py runserver
+```
+
+Open browser to http://localhost:8000
