@@ -54,6 +54,11 @@ In order to have the access to the Django admin (/admin/), you need to be a staf
 ```bash
 python manage.py createsuperuser
 ```
+## Testing ##
+Ensure all the test pass
+```bash
+python manage.py test
+```
 
 ## Running ##
 ```bash
