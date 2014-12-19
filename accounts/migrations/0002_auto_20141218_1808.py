@@ -19,6 +19,7 @@ class Migration(migrations.Migration):
     dependencies = [
         ('accounts', '0001_initial'),
         ('sites', '0001_initial'),
+        ('authtoken', '0001_initial'),
     ]
 
     operations = [
