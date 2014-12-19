@@ -24,7 +24,7 @@ DEBUG = True
 
 TEMPLATE_DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -43,6 +43,7 @@ INSTALLED_APPS = (
     'django_extensions',
     'rest_framework',
     'rest_framework.authtoken',
+    'social.apps.django_app.default',
 
     # Guitar Academy Applications
     'accounts',
@@ -103,6 +104,7 @@ SITE_ID = 1
 
 # Template Context
 TEMPLATE_CONTEXT_PROCESSORS = (
+    # Django core/contrib context
     "django.contrib.auth.context_processors.auth",
     "django.core.context_processors.debug",
     "django.core.context_processors.i18n",
@@ -111,9 +113,40 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     "django.core.context_processors.tz",
     "django.contrib.messages.context_processors.messages",
 
+    # Third party context
+    'social.apps.django_app.context_processors.backends',
+    'social.apps.django_app.context_processors.login_redirect',
+
+    # Guitar Academy internal context
     'ga.context_processors.site',
 )
 
+
+# User Authentication
+AUTHENTICATION_BACKENDS = (
+    'social.backends.facebook.FacebookAppOAuth2',
+    'social.backends.facebook.FacebookOAuth2',
+#    'social.backends.google.GoogleOAuth',
+#    'social.backends.google.GoogleOAuth2',
+#    'social.backends.google.GoogleOpenId',
+#    'social.backends.google.GooglePlusAuth',
+#    'social.backends.google.GoogleOpenIdConnect',
+    'django.contrib.auth.backends.ModelBackend',
+)
+
+AUTH_USER_MODEL = 'accounts.User'
+LOGIN_URL = '/login/'
+LOGIN_REDIRECT_URL = '/profile/'
+SOCIAL_AUTH_URL_NAMESPACE = 'social'
+SOCIAL_AUTH_FACEBOOK_KEY = os.getenv('FACEBOOK_KEY', '')
+SOCIAL_AUTH_FACEBOOK_SECRET = os.getenv('FACEBOOK_SECRET', '')
+SOCIAL_AUTH_FACEBOOK_SCOPE = ['email']
+SOCIAL_AUTH_LOGIN_ERROR_URL = '/social-auth/login-error/'
+SOCIAL_AUTH_LOGIN_URL = '/social-auth/login/'
+#SOCIAL_AUTH_NEW_USER_REDIRECT_URL = '/social-auth/new-users/'
+#SOCIAL_AUTH_NEW_ASSOCIATION_REDIRECT_URL = '/social-auth/new-association/'
+#SOCIAL_AUTH_DISCONNECT_REDIRECT_URL = '/social-auth/account-disconnected/'
+#SOCIAL_AUTH_INACTIVE_USER_URL = '/social-auth/inactive-user/'
 
 # Django Rest Framework Configuration
 REST_FRAMEWORK = {
@@ -132,12 +165,10 @@ FIXTURE_DIRS = (
     os.path.join(BASE_DIR, 'fixtures'),
 )
 
-AUTH_USER_MODEL = 'accounts.User'
-
 try:
     LOCAL_SETTINGS
 except NameError:
     try:
-        from local_settings import *
+        from .local_settings import *
     except ImportError:
         pass

@@ -4,8 +4,11 @@ from django.contrib import admin
 from .views import api_root
 
 urlpatterns = patterns('',
-    url(r'^admin/', include(admin.site.urls)),
+
+    # Home
     url(r'^$', api_root, name='api-root'),
+
+    # Applications
     url(r'training/',
         include('training.urls', namespace='training', app_name='training')),
 
@@ -16,4 +19,10 @@ urlpatterns = patterns('',
     url(r'^session-auth/',
         include('rest_framework.urls', namespace='rest_framework')),
 
+    # Social Authentication
+    url('', include('social.apps.django_app.urls', namespace='social')),
+
+    # Admin
+    url(r'^admin/', include(admin.site.urls)),
 )
+
