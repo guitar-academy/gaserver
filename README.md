@@ -49,6 +49,17 @@ vi gaserver/local_settings.py
 python manage.py migrate
 ```
 
+### Setup Root User (Optional) ###
+In order to have the access to the Django admin (/admin/), you need to be a staff or superuser.
+```bash
+python manage.py createsuperuser
+```
+## Testing ##
+Ensure all the test pass
+```bash
+python manage.py test
+```
+
 ## Running ##
 ```bash
 python manage.py runserver
