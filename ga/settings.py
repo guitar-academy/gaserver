@@ -42,6 +42,7 @@ INSTALLED_APPS = (
     # Third Party Applications
     'django_extensions',
     'rest_framework',
+    'rest_framework.authtoken',
 
     # Guitar Academy Applications
     'accounts',
@@ -120,6 +121,10 @@ REST_FRAMEWORK = {
         'rest_framework.renderers.JSONRenderer',
         'ga.renderers.GABrowsableAPIRenderer',
     ),
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework.authentication.SessionAuthentication',
+        'rest_framework.authentication.TokenAuthentication',
+    )
 }
 
 # Fixture Directory (Initial Data, Dump Data, Test Data, etc.)
